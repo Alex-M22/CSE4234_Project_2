@@ -2,10 +2,22 @@
 <html>
     <head>
         <title>Engage Webapp</title>
+        <script type="text/javascript" src="js/main.js" defer></script>
+
     </head>
     <body>
-        <header>
-            
+        <header>  
+            <form id="filterForm">
+                <label for="formTitle">Title</label>
+                <input id="formTitle" type="text" name="Title">
+                <label for="formDesc">Desc</label>
+                <input id="formDesc" type="test" name="Description">
+                <label for="formDate">Date</label>
+                <input id="formDate" type="text" name="Date">
+                <input type="button" name="Submit" value="Submit" onclick="applyFilter()">
+                <input type="button" name="ClearFilter" onclick="clearFilter()" value="Clear Filters">
+            </form>
+            <p id="showCount"></p>
         </header>
         <main>
             
