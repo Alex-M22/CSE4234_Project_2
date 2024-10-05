@@ -17,6 +17,8 @@ Functions Created/Completed:
     Scott Troi:
 
     Anthony Ciero:
+        function descFilter();    Complete
+        function clearFilter();    Created/In Progress
 
     T'Avion Rodgers:
 
@@ -51,6 +53,19 @@ function titleFilter(eventObjs, title) {
 }
 
 
+function descFilter(eventObjs, desc) {
+    // Create empty array
+    let valid = [];
+    // Searches through each event
+    eventObjs.forEach((event) => {
+        // Checks to see if the description inoputted is in the description of any of the events
+        if (event.desc.toLowerCase().includes(desc.toLowerCase())) {
+            // Pushes event to array
+            valid.push(event);
+        }  
+    });
+    return valid; // Return
+}
 
 
 function filterEvents(eventObjs, value, filter) {
@@ -144,7 +159,9 @@ function applyFilter() {
 
 }
 
-
+function clearFilter() {
+    console.log("Clear the filter");
+}
 
 function hideEvents(filtered) {
     // Modify class name to match cards class
