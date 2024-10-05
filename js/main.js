@@ -160,7 +160,21 @@ function applyFilter() {
 }
 
 function clearFilter() {
-    console.log("Clear the filter");
+    // Uses empty data to restore all cards instead of pulling from input fields
+    let date;
+    let title;
+    let desc;
+    
+    // Filter by date
+    let filteredByDate = filterEvents(eventObjs, "", dateFilter);
+    // Filter by title
+    let filteredByTitle = filterEvents(eventObjs, "", titleFilter);
+    // Filter by desc
+    let filteredByDesc = filterEvents(eventObjs, "", descFilter);
+    
+    let filtered = intersection(filteredByDate, filteredByTitle, filteredByDesc);
+    
+    console.log("Cleared the filter");
 }
 
 function hideEvents(filtered) {
