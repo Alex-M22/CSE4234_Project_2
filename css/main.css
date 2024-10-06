@@ -9,24 +9,24 @@ body {
 
 header {
     background: linear-gradient(90deg, purple, red);
-    padding: 20px;
+    padding: 2em;
     color: white;
 }
 
 header form {
     position: relative;
-    padding: 5px;
-    padding-top: 10px;
-    margin-top: 10px;
-    border: 1px solid white;
+    padding: 1em;
+    padding-top: 1em;
+    margin-top: 1em;
+    border: 0.5em solid white;
 
-    border-radius: 10px;
+    border-radius: 10em;
 }
 
 header form p {
     position: relative;
-    top: -25px;
-    padding:    0px;
-    font-size: 16px;
+    top: -2em;
+    padding:    0em;
+    font-size: 2em;
     display: inline-block;
 }

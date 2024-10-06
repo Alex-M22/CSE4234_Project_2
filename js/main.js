@@ -15,7 +15,7 @@ Functions Created/Completed:
         function updateCount();     Finished
 
     Scott Troi:
-
+        function learnMore();       Need to do
     Anthony Ciero:
         function descFilter();    Complete
         function clearFilter();    Created/In Progress
@@ -217,4 +217,6 @@ const getData = () => {
 
 }
 
+
+// Scott
 getData();
