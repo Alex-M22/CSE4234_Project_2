@@ -1,13 +1,22 @@
 <!DOCTYPE HTML>
 <html>
     <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Engage Webapp</title>
         <script type="text/javascript" src="js/main.js" defer></script>
+        <link rel="stylesheet" href="css/main.css">
 
     </head>
     <body>
-        <header>  
+        <header>
+            <h1>My Events Manager</h1>
+            <p id="showCount">Showing: </p>
             <form id="filterForm">
+            <p>Filter events</p>
+                <label for="formTitle">Title</label>
+                <input id="formTitle" type="text" name="Title">
+
                 <label for="formTitle">Title</label>
                 <input id="formTitle" type="text" name="Title">
                 <label for="formDesc">Desc</label>
@@ -17,10 +26,10 @@
                 <input type="button" name="Submit" value="Submit" onclick="applyFilter()">
                 <input type="button" name="ClearFilter" onclick="clearFilter()" value="Clear Filters">
             </form>
-            <p id="showCount"></p>
+
         </header>
         <main>
-            
+            <!-- card stuff here -->
         </main>
         <footer>
             
