@@ -221,4 +221,7 @@ const getData = () => {
 // Scott
 
 // learn more button
+function learnMore(){
+    // document
+}
 getData();

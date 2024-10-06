@@ -1,3 +1,5 @@
+/* Main header stuffs */
+
 body {
     font-family: Arial, sans-serif;
     margin: 0;
@@ -33,4 +35,27 @@ header form p {
     padding:    0em;
     font-size: 1em;
     display: inline-block;
+}
+
+main {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2em;
+}
+
+/* Card stuffs */
+.cardDescription {
+    display: none;
+    margin-top: 1em;
+}
+
+.cardButton {
+
+}
+.cardP {
+
+}
+
+.cardh2 {
+
 }
