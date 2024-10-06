@@ -173,7 +173,6 @@ function clearFilter() {
     let filteredByDesc = filterEvents(eventObjs, "", descFilter);
     
     let filtered = intersection(filteredByDate, filteredByTitle, filteredByDesc);
-    
     console.log("Cleared the filter");
 }
 
@@ -199,24 +198,6 @@ function updateCount(aList) {
     document.querySelector('#showCount').innerHTML = `Showing: ${aList.length}/${eventObjs.length}`;
 
 }
-
-
-
-
-
-// Scott's
-function clearFilter() {
-    // Do something
-    console.log('I Cleared the filter');
-}
-
-
-// Scott's
-function descFilter(eventObjs, desc) {
-    // Do something
-    console.log("I filtered by description");
-}
-
 
 
 
