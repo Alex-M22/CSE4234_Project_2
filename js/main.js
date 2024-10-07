@@ -161,11 +161,6 @@ function applyFilter() {
 
 function clearFilter() {
     // Uses empty data to restore all cards instead of pulling from input fields
-    let date = "";
-    let title = "";
-    let desc = "";
-
-    // Should I set variables named the normal things blank and use them to clear filter or just put in blank ""
     
     // Filter by date
     let filteredByDate = filterEvents(eventObjs, "", dateFilter);
@@ -175,6 +170,8 @@ function clearFilter() {
     let filteredByDesc = filterEvents(eventObjs, "", descFilter);
     
     let filtered = intersection(filteredByDate, filteredByTitle, filteredByDesc);
+
+    hideEvents(filtered)
 }
 
 function hideEvents(filtered) {
