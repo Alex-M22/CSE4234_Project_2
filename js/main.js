@@ -215,6 +215,15 @@ const getData = () => {
 
 // learn more button
 function learnMore(){
-    // document
+    /*
+    // if none fill
+    if (document.querySelector('#whatever_it_is').innerHTML === None) {
+        document.querySelector('#whatever_it_is').innerHTML = // description thingy
+    }
+    // if not none go to none
+    else {
+        document.querySelector('#whatever_it_is').innerHTML = None
+    }
+    */
 }
 getData();
