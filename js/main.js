@@ -18,7 +18,7 @@ Functions Created/Completed:
         function learnMore();       Need to do
     Anthony Ciero:
         function descFilter();    Complete
-        function clearFilter();    Created/In Progress
+        function clearFilter();    Complete
 
     T'Avion Rodgers:
 
@@ -160,18 +160,13 @@ function applyFilter() {
 }
 
 function clearFilter() {
-    // Uses empty data to restore all cards instead of pulling from input fields
-    
-    // Filter by date
-    let filteredByDate = filterEvents(eventObjs, "", dateFilter);
-    // Filter by title
-    let filteredByTitle = filterEvents(eventObjs, "", titleFilter);
-    // Filter by desc
-    let filteredByDesc = filterEvents(eventObjs, "", descFilter);
-    
-    let filtered = intersection(filteredByDate, filteredByTitle, filteredByDesc);
+    // Erases the values in the date, title, and description input boxes when the clear button is clicked
+    document.querySelector('#formDate').value = "";
+    document.querySelector('#formTitle').value = "";
+    document.querySelector('#formDesc').value = "";
 
-    hideEvents(filtered)
+    // Restores all the cards to the screen since no filters are applied
+    hideEvents(eventObjs);
 }
 
 function hideEvents(filtered) {
