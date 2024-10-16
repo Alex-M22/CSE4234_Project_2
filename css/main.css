@@ -51,7 +51,7 @@ main p {
 main article {
     margin-top:1em;
     border: 0.15em solid #e0e0e0;
-
+    width:25em;
     border-radius: 0em;
 
 }
@@ -64,13 +64,16 @@ main article {
 
 .description {
     color: black;
+    line-height: 1.5;
+
+
 }
 
 .learn-more-btn {
     color: #956ead;
 }
 article img {
-    width: 30em;
+    width: 25em;
     height:auto;
     /*margin:1em;*/
 }

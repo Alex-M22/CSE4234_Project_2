@@ -243,10 +243,10 @@ const getData = () => {
                        <p>${event.getElementsByTagName('title')[0].textContent}</p>
                        <p>${start}</p>
                        <p>${event.getElementsByTagName('location')[0].textContent}</p>
-                        <div class="description" style="display: none;">
-                                   <p>${event.getElementsByTagName('description')[0].textContent}</p>
-                               </div>
                        <button class="learn-more-btn" data-index="${index}" onclick="learnMore(this)">Learn More</button>
+                       <div class="description" style="display: none;">
+                                  <p>${event.getElementsByTagName('description')[0].textContent}</p>
+                              </div>
                     </article>
                 `;
 
