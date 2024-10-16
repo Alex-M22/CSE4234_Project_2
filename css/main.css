@@ -38,24 +38,52 @@ header form p {
 }
 
 main {
+    background-color: white;
     display: flex;
     flex-wrap: wrap;
-    gap: 2em;
+    gap: 1em;
 }
+
+main p {
+    color: black;
+}
+
+main article {
+    margin-top:1em;
+    border: 0.15em solid #e0e0e0;
+
+    border-radius: 0em;
+
+}
+
 
 /* Card stuffs */
 .cardDescription {
     display: none;
-    margin-top: 1em;
 }
 
-.cardButton {
-
-}
-.cardP {
-
+.description {
+    color: black;
 }
 
-.cardh2 {
-
+.learn-more-btn {
+    color: #956ead;
 }
+article img {
+    width: 30em;
+    height:auto;
+    /*margin:1em;*/
+}
+
+article button {
+    margin-bottom: 0.5em
+    /* color: #956ead;*/
+}
+
+@media (max-width: 768px) {
+
+    article {
+        flex: 1 1 100%;
+    }
+}
+

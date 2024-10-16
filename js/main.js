@@ -47,7 +47,7 @@ function titleFilter(eventObjs, title) {
         // Checks to see if the given title is in the list of titles
         if (event.title.toLowerCase().includes(title.toLowerCase())) {
             valid.push(event); // if true then add to valid
-        }  
+        }
     });
     return valid; // Return
 }
@@ -62,7 +62,7 @@ function descFilter(eventObjs, desc) {
         if (event.desc.toLowerCase().includes(desc.toLowerCase())) {
             // Pushes event to array
             valid.push(event);
-        }  
+        }
     });
     return valid; // Return
 }
@@ -155,7 +155,7 @@ function applyFilter() {
     if (filtered !== 0 && filtered !== 1) {
         hideEvents(filtered);
     } else if (filtered === 1) {
-        hideEvents([]); 
+        hideEvents([]);
     }
 
 }
@@ -201,6 +201,7 @@ function updateCount(aList) {
 let eventObjs = [];
 let eventsHTML = '';
 
+let index = 0;
 const getData = () => {
     return fetch('media/events.rss')
     .then(function(resp) {
@@ -238,11 +239,14 @@ const getData = () => {
             // Build html for tag
             eventsHTML +=`
                     <article class="card" id="event-${index+1}">
-                       <img src="${imgUrl}" alt="${event.getElementsByTagName('title')[0].textContent}">                
+                       <img src="${imgUrl}" alt="${event.getElementsByTagName('title')[0].textContent}">
                        <p>${event.getElementsByTagName('title')[0].textContent}</p>
                        <p>${start}</p>
                        <p>${event.getElementsByTagName('location')[0].textContent}</p>
-                       <button>Learn More</button>
+                        <div class="description" style="display: none;">
+                                   <p>${event.getElementsByTagName('description')[0].textContent}</p>
+                               </div>
+                       <button class="learn-more-btn" data-index="${index}" onclick="learnMore(this)">Learn More</button>
                     </article>
                 `;
 
@@ -259,13 +263,15 @@ const getData = () => {
             }
 
             eventObjs.push(eventObj);
+
+            // console.log(index);
         })
         // Injects the articles into the html file
         let cardContainter = document.querySelector("main");
         cardContainter.innerHTML = eventsHTML;
         // Updates the count of cards showing
         updateCount(eventObjs);
-
+        index +=1;
     })
 }
 
@@ -273,16 +279,20 @@ const getData = () => {
 // Scott
 
 // learn more button
-function learnMore(){
-    /*
-    // if none fill
-    if (document.querySelector('#whatever_it_is').innerHTML === None) {
-        document.querySelector('#whatever_it_is').innerHTML = // description thingy
+function learnMore(button){
+    // Get the parent card of the clicked button
+    const card = button.closest('.card');
+
+    // get current description. if enpty or is it  not empty
+    const description = card.querySelector('.description');
+
+    // Toggle display
+    if (description.style.display === "none") {
+        description.style.display = "block";
+        button.textContent = "Show Less";  // Change button text
+    } else {
+        description.style.display = "none";
+        button.textContent = "Learn More";  //empty
     }
-    // if not none go to none
-    else {
-        document.querySelector('#whatever_it_is').innerHTML = None
-    }
-    */
 }
 getData();
