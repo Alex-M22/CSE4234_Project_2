@@ -289,10 +289,8 @@ function learnMore(button){
     // Toggle display
     if (description.style.display === "none") {
         description.style.display = "block";
-        button.textContent = "Show Less";  // Change button text
     } else {
         description.style.display = "none";
-        button.textContent = "Learn More";  //empty
     }
 }
 getData();
