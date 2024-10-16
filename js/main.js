@@ -6,6 +6,9 @@
 Functions Created/Completed:
 
     Alex Merino:
+        ALL Debugging and and variable renaming to match
+        different people's code 
+
         function dateFilter();      Finished
         function titleFilter();     Finished
         function filterEvents();    Finished
@@ -14,6 +17,7 @@ Functions Created/Completed:
         function hideEvents();      Finished
         function updateCount();     Finished
 
+
     Scott Troi:
         function learnMore();       Need to do
     Anthony Ciero:
@@ -21,7 +25,7 @@ Functions Created/Completed:
         function clearFilter();    Complete
 
     T'Avion Rodgers:
-
+        const getData()             Finished
 
 */
 
@@ -194,8 +198,24 @@ function updateCount(aList) {
 }
 
 
+// learn more button
+function learnMore(button){
+    // Get the parent card of the clicked button
+    const card = button.closest('.card');
 
-// T'Avion's
+    // get current description. if enpty or is it  not empty
+    const description = card.querySelector('.description');
+
+    // Toggle display
+    if (description.style.display === "none") {
+        description.style.display = "block";
+    } else {
+        description.style.display = "none";
+    }
+}
+
+
+
 
 // Card object creation
 let eventObjs = [];
@@ -240,11 +260,11 @@ const getData = () => {
             eventsHTML +=`
                     <article class="card" id="event-${index+1}">
                        <img src="${imgUrl}" alt="${event.getElementsByTagName('title')[0].textContent}">
-                       <p>${event.getElementsByTagName('title')[0].textContent}</p>
-                       <p>${start}</p>
-                       <p>${event.getElementsByTagName('location')[0].textContent}</p>
+                       <h2>${event.getElementsByTagName('title')[0].textContent}</h2>
+                       <p class="event-date">${start}</p>
+                       <p class="event-loc">${event.getElementsByTagName('location')[0].textContent}</p>
                        <button class="learn-more-btn" data-index="${index}" onclick="learnMore(this)">Learn More</button>
-                       <div class="description" style="display: none;">
+                       <div class="description">
                                   <p>${event.getElementsByTagName('description')[0].textContent}</p>
                               </div>
                     </article>
@@ -264,7 +284,6 @@ const getData = () => {
 
             eventObjs.push(eventObj);
 
-            // console.log(index);
         })
         // Injects the articles into the html file
         let cardContainter = document.querySelector("main");
@@ -275,22 +294,4 @@ const getData = () => {
     })
 }
 
-
-// Scott
-
-// learn more button
-function learnMore(button){
-    // Get the parent card of the clicked button
-    const card = button.closest('.card');
-
-    // get current description. if enpty or is it  not empty
-    const description = card.querySelector('.description');
-
-    // Toggle display
-    if (description.style.display === "none") {
-        description.style.display = "block";
-    } else {
-        description.style.display = "none";
-    }
-}
 getData();

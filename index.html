@@ -12,24 +12,20 @@
         <header>
             <h1>My Events Manager</h1>
             <p id="showCount"></p>
-            <form id="filterForm">
             <fieldset>
             <legend>Filter events</legend>
-                <label for="formShow">Show</label>
-                <select id="formShow" name="Show">
-                    <option value ="all">All</option>
-                    <option value = "25">25</option>
-                    <option value = "50">50</option>
-                    <option value = "100">100</option>
-                </select>
-                <label for="formTitle">Title</label>
+            <form id="filterForm">
+                <label for="formTitle">Title
                 <input id="formTitle" type="text" name="Title">
-                <label for="formDesc">Desc</label>
+                </label>
+                <label for="formDesc">Desc
                 <input id="formDesc" type="test" name="Description">
-                <label for="formDate">Date</label>
+                </label>
+                <label for="formDate">Date
                 <input id="formDate" type="text" name="Date">
-                <input type="button" name="Submit" value="Submit" onclick="applyFilter()">
-                <input type="button" name="ClearFilter" onclick="clearFilter()" value="Clear Filters">
+                </label>
+                <input class="form-button" type="button" name="Submit" value="Submit" onclick="applyFilter()">
+                <input class="form-button" type="button" name="ClearFilter" onclick="clearFilter()" value="Clear Filters">
             </form>
         </fieldset>
         </header>

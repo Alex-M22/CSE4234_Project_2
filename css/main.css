@@ -1,12 +1,11 @@
-/* Main header stuffs */
+/* Body and header */
 
 body {
-    font-family: Arial, sans-serif;
+    font-family: "Segoe UI", Roboto, Helvetica, Arial, serif;
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    background-color: #121212;
-    color: #e0e0e0;
+    overflow-x: hidden; 
 }
 
 header {
@@ -14,6 +13,10 @@ header {
     padding: 1em;
     color: white;
 }
+
+
+
+/* Form ------------------------------------------ */
 
 header form {
     position: relative;
@@ -28,6 +31,37 @@ fieldset {
     border-radius: 1em
 }
 
+fieldset {
+    background: linear-gradient(90deg, purple, #be0041);
+}
+
+.form-button{
+    background: #ccc;
+    padding: 0.9em;
+    font-weight: bold;
+    color: #000;
+    border-radius: 0.4em; 
+    border: none;
+    font-size: 0.91em;
+    margin-right: 0.2em;
+}
+
+form label {
+    background: #ccc;
+    border-radius: 0.2em;
+    display: inline-block;
+    color: #000;
+    padding: 0.2em 0.2em 0.2em 0.5em;
+    margin-right: 1em;
+    font-weight: bold;
+}
+
+form label input {
+    padding: 0.7em;
+    border-radius: 0.1em;
+    border: none;
+}
+
 
 header form p {
     position: relative;
@@ -37,56 +71,129 @@ header form p {
     display: inline-block;
 }
 
+
+
+/* Main ----------------------------------------- */
+
 main {
-    background-color: white;
     display: flex;
     flex-wrap: wrap;
-    gap: 1em;
+    justify-content: flex-start;
+    margin: 1em 0.2em;
+    width: 100%;
 }
 
 main p {
     color: black;
 }
 
-main article {
+
+/* Cards --------------------------------------------- */
+
+
+.card {
     margin-top:1em;
     border: 0.15em solid #e0e0e0;
-    width:25em;
+    width:19.5%;
     border-radius: 0em;
+    margin-right: 0.01em;
 
-}
-
-
-/* Card stuffs */
-.cardDescription {
-    display: none;
 }
 
 .description {
     color: black;
     line-height: 1.5;
+    display: none;
 
+}
 
+.p-name {
+    margin-right: 0.5em;
+    margin-left: 0.5em;
+}
+.card p, .card h2 {
+    margin-left: 0.5em; 
+    margin-right: 0.5em; 
+    word-wrap: break-word;
+}
+
+.event-date {
+    margin: 0;
+}
+
+.event-loc {
+    margin-top: 0.3em;
 }
 
 .learn-more-btn {
-    color: #956ead;
-}
-article img {
-    width: 25em;
-    height:auto;
-    /*margin:1em;*/
+    color: #1a0577;
+    background: #ccc;
+    border: none;
+    border-radius: 0.3em;
+    padding: 0.5em;
+    margin-left: 0.5em; 
+    margin-bottom: 0.5em; 
 }
 
-article button {
-    margin-bottom: 0.5em
-    /* color: #956ead;*/
+.learn-more-btn:hover, .form-button:hover{
+    cursor: pointer;
 }
+
+.card img {
+    width: -webkit-fill-available;
+
+}
+
+
+
+
+/* Mobile View ----------------------------------------------- */
+
+
 
 @media (max-width: 768px) {
 
-    article {
-        flex: 1 1 100%;
+    fieldset {
+        border: 0.15em solid white;
+        padding: 0;
+        border-radius: 1em
     }
+
+    .form-button{
+        margin: 1em 0 0.5em 2%;
+        width: 46%;
+    }
+
+    form label {
+        width: 96%;
+        margin: 1em 2% 0em 2%;
+    }
+
+    form label input {
+        width: 90%;
+        padding: 0.7em;
+        border-radius: 0.1em;
+        border: none;
+    }
+
+
+    header form p {
+        position: relative;
+        top: -1.5em;
+        padding:    0em;
+        font-size: 1em;
+        display: inline-block;
+    }
+
+    main {
+        display: block;
+    }
+
+    .card {
+        width: 90%;
+        margin: auto;
+        margin-bottom: 1em;
+    }
+
 }
 
