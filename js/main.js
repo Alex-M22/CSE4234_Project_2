@@ -199,11 +199,10 @@ function updateCount(aList) {
 
 
 // learn more button
-function learnMore(button){
+function learnMore(button, cardid){
     // Get the parent card of the clicked button
-    const card = button.closest('.card');
-
-    // get current description. if enpty or is it  not empty
+    const card = document.getElementById(cardid);
+    // get current description. if empty or is it  not empty
     const description = card.querySelector('.description');
 
     // Toggle display
@@ -263,7 +262,7 @@ const getData = () => {
                        <h2>${event.getElementsByTagName('title')[0].textContent}</h2>
                        <p class="event-date">${start}</p>
                        <p class="event-loc">${event.getElementsByTagName('location')[0].textContent}</p>
-                       <button class="learn-more-btn" data-index="${index}" onclick="learnMore(this)">Learn More</button>
+                       <button class="learn-more-btn" data-index="${index}" onclick="learnMore(this, 'event-${index+1}')">Learn More</button>
                        <div class="description">
                                   <p>${event.getElementsByTagName('description')[0].textContent}</p>
                               </div>
