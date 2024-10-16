@@ -29,7 +29,7 @@ function dateFilter(eventObjs, date) {
     let valid = [];
     let day = Math.floor(date.getTime() / 86400000);
     eventObjs.forEach((event) => {
-        // console.log()
+        console.log(event.start)
         if (day === Math.floor(event.start.getTime() / 86400000)) {
             valid.push(event)
         }
@@ -149,6 +149,7 @@ function applyFilter() {
     let filteredByDesc = filterEvents(eventObjs, filterObj.desc, descFilter);
     let filtered = intersection(filteredByDate, filteredByTitle, filteredByDesc);
 
+    console.log(filtered)
     // If no filter was put or if filter put
     // was not in dataset return all or nothing, respectively
     if (filtered !== 0 && filtered !== 1) {
@@ -172,7 +173,7 @@ function clearFilter() {
 function hideEvents(filtered) {
     // Modify class name to match cards class
     // puts all cards to display as none
-    cards = document.getElementsByClassName("cards");
+    let cards = document.getElementsByClassName("card");
     for (let i = cards.length - 1; i >= 0; i--) {
         cards[i].style.display = 'none';
     }
@@ -200,7 +201,8 @@ function updateCount(aList) {
 let eventObjs = [];
 let eventsHTML = '';
 
-fetch('media/events.rss')
+const getData = () => {
+    return fetch('media/events.rss')
     .then(function(resp) {
         return resp.text();
     })
@@ -231,7 +233,7 @@ fetch('media/events.rss')
 
             // Some enclosure tags nonexistent so conditional statement :/
             let enclosure = event.getElementsByTagName('enclosure')[0]
-            let imgUrl = enclosure ? enclosure.getAttribute('url') : '../media/default_img.jpeg';
+            let imgUrl = enclosure ? enclosure.getAttribute('url') : '../media/default_img.jpg';
 
             // Build html for tag
             eventsHTML +=`
@@ -246,22 +248,26 @@ fetch('media/events.rss')
 
             // Store as object
             let eventObj = {
-                "id": index+1,
+                "id": `event-${index+1}`,
                 "img": imgUrl,
                 "title": event.getElementsByTagName('title')[0].textContent,
                 "date": start,
                 "location": event.getElementsByTagName('location')[0].textContent,
-                "learn more": `From ${start} ${time1} to ${time2} at ${event.getElementsByTagName('location')[0].textContent}`,
+                "learn-more": `From ${start} ${time1} to ${time2} at ${event.getElementsByTagName('location')[0].textContent}`,
+                "desc": desc,
+                "start": new Date(start)
             }
-            console.log(eventObj["id"]);
-            console.log(eventObj["img"]);
-            console.log(eventObj["title"]);
-            console.log(eventObj["date"]);
-            console.log(eventObj["location"]);
-            console.log(eventObj["learn more"]);
+
             eventObjs.push(eventObj);
         })
+        // Injects the articles into the html file
+        let cardContainter = document.querySelector("main");
+        cardContainter.innerHTML = eventsHTML;
+        // Updates the count of cards showing
+        updateCount(eventObjs);
+
     })
+}
 
 
 // Scott
