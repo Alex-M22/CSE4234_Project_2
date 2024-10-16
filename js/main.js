@@ -196,19 +196,72 @@ function updateCount(aList) {
 
 // T'Avion's
 
+// Card object creation
 let eventObjs = [];
-let count = 1;
-let cards = ``;
+let eventsHTML = '';
 
-const getData = () => {
-    /*
-    Note from Alex:
-    Would reccomend using this function to parse from a 
-    string to xml format for iteration
-        window.DOMParser().parseFromString(NAME_OF_STR_VARIABLE, "text/xml")
-    */
+fetch('media/events.rss')
+    .then(function(resp) {
+        return resp.text();
+    })
+    .then(function(data) {
+        // Provided by mozilla link in hw pdf
+        let parser = new DOMParser(),
+            eventsXml = parser.parseFromString(data, 'text/xml');
 
-}
+        // Gets list of all events, separated by 'item' tag
+        let eventsEach = eventsXml.getElementsByTagName('item');
+        let eventsEachXML = Array.from(eventsEach)
+        eventsEachXML.forEach((event, index) =>{
+
+            // Parse times beforehand
+            let desc = event.getElementsByTagName('description')[0].textContent;
+            let descriptionParsed = parser.parseFromString(desc, 'text/html');
+            let sTime = descriptionParsed.getElementsByTagName('time')[0];
+
+            // Start date string parsing
+            let sDateObj = new Date(sTime.getAttribute('datetime'));
+            let sFormat = {weekday: 'long', month:'long', day: 'numeric', year: 'numeric'};
+            let start = sDateObj.toLocaleDateString('en-US', sFormat);
+
+            // Times for each event
+            let timeFormat = {hour: 'numeric', minute: 'numeric'};
+            let time1 = sDateObj.toLocaleTimeString('en-US', timeFormat);
+            let time2 = descriptionParsed.getElementsByTagName('time')[1].textContent;
+
+            // Some enclosure tags nonexistent so conditional statement :/
+            let enclosure = event.getElementsByTagName('enclosure')[0]
+            let imgUrl = enclosure ? enclosure.getAttribute('url') : '../media/default_img.jpeg';
+
+            // Build html for tag
+            eventsHTML +=`
+                    <article class="card" id="event-${index+1}">
+                       <img src="${imgUrl}" alt="${event.getElementsByTagName('title')[0].textContent}">                
+                       <p>${event.getElementsByTagName('title')[0].textContent}</p>
+                       <p>${start}</p>
+                       <p>${event.getElementsByTagName('location')[0].textContent}</p>
+                       <button>Learn More</button>
+                    </article>
+                `;
+
+            // Store as object
+            let eventObj = {
+                "id": index+1,
+                "img": imgUrl,
+                "title": event.getElementsByTagName('title')[0].textContent,
+                "date": start,
+                "location": event.getElementsByTagName('location')[0].textContent,
+                "learn more": `From ${start} ${time1} to ${time2} at ${event.getElementsByTagName('location')[0].textContent}`,
+            }
+            console.log(eventObj["id"]);
+            console.log(eventObj["img"]);
+            console.log(eventObj["title"]);
+            console.log(eventObj["date"]);
+            console.log(eventObj["location"]);
+            console.log(eventObj["learn more"]);
+            eventObjs.push(eventObj);
+        })
+    })
 
 
 // Scott
